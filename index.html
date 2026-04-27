@@ -1,0 +1,1780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Earth Residential — April 2026 Performance Reports</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+/* Shared vars */
+:root {
+  --text-primary: #1a1a1a;
+  --text-secondary: #5a5a6e;
+  --text-muted: #8e8e9e;
+  --green: #2a9d6e;
+  --green-bg: #eaf7f0;
+  --red: #d44040;
+  --red-bg: #fceaea;
+  --amber: #c48a1a;
+  --amber-bg: #fef6e6;
+}
+
+/* Onyx theme */
+.onyx {
+  --brand-dark: #0f0f0f;
+  --brand-accent: #a88beb;
+  --brand-accent-light: #d4c4f5;
+  --brand-light: #f5f3f9;
+  --border: #e5e2ec;
+  --card-bg: #ffffff;
+  --page-bg: #f5f3f9;
+  --text-primary: #1a1a1a;
+  --text-secondary: #5a5a6e;
+  --text-muted: #8e8e9e;
+}
+
+/* Elysian theme */
+.elysian {
+  --brand-dark: #1a1a2e;
+  --brand-accent: #c9a96e;
+  --brand-accent-light: #e8d5b0;
+  --brand-light: #f7f4ef;
+  --border: #e8e5df;
+  --card-bg: #ffffff;
+  --page-bg: #f7f4ef;
+  --text-primary: #1a1a2e;
+  --text-secondary: #5a5a72;
+  --text-muted: #8e8ea0;
+}
+
+/* Camino theme */
+.camino {
+  --brand-dark: #1a2e1a;
+  --brand-accent: #6ea86e;
+  --brand-accent-light: #b0d5b0;
+  --brand-light: #f4f7f2;
+  --border: #dfe8db;
+  --card-bg: #ffffff;
+  --page-bg: #f4f7f2;
+  --text-primary: #1a2e1a;
+  --text-secondary: #5a6e5a;
+  --text-muted: #8e9e8e;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: #1a1a1a;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  background: #f5f3f9;
+  transition: background 0.3s;
+}
+
+body.on-elysian { background: #f7f4ef; }
+body.on-camino { background: #f4f7f2; }
+
+/* TAB NAV */
+.tab-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #fff;
+  border-bottom: 1px solid #e5e2ec;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.tab-nav-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.tab-nav-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a1a;
+  padding: 18px 0;
+  letter-spacing: -0.2px;
+  margin-right: auto;
+}
+.tab-nav-brand .sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #8e8e9e;
+  display: block;
+  margin-top: 2px;
+}
+.tab-btn {
+  background: none;
+  border: none;
+  padding: 18px 18px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #8e8e9e;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+.tab-btn:hover { color: #1a1a1a; }
+.tab-btn.active.for-onyx { color: #a88beb; border-bottom-color: #a88beb; }
+.tab-btn.active.for-elysian { color: #c9a96e; border-bottom-color: #c9a96e; }
+.tab-btn.active.for-camino { color: #6ea86e; border-bottom-color: #6ea86e; }
+.tab-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+.tab-dot.onyx-dot { background: #a88beb; }
+.tab-dot.elysian-dot { background: #c9a96e; }
+.tab-dot.camino-dot { background: #6ea86e; }
+
+/* Property content hidden/shown */
+.property-report { display: none; }
+.property-report.active { display: block; }
+
+.page { max-width: 1000px; margin: 0 auto; }
+
+/* HERO */
+.hero {
+  color: #fff;
+  padding: 40px 24px 36px;
+  position: relative;
+  overflow: hidden;
+}
+.onyx .hero {
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 50%, #2a1a3e 100%);
+}
+.elysian .hero {
+  background: linear-gradient(135deg, #1a1a2e 0%, #2d2d54 50%, #3a2d4a 100%);
+}
+.camino .hero {
+  background: linear-gradient(135deg, #1a2e1a 0%, #2d442d 50%, #3a4a2d 100%);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 300px; height: 300px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 50%;
+}
+.onyx .hero::before { border-color: rgba(168,139,235,0.15); }
+.elysian .hero::before { border-color: rgba(201,169,110,0.15); }
+.camino .hero::before { border-color: rgba(110,168,110,0.15); }
+.elysian .hero::after {
+  content: '';
+  position: absolute;
+  bottom: -120px; right: 60px;
+  width: 400px; height: 400px;
+  border: 1px solid rgba(201,169,110,0.08);
+  border-radius: 50%;
+}
+.camino .hero::after {
+  content: '';
+  position: absolute;
+  bottom: -120px; right: 60px;
+  width: 400px; height: 400px;
+  border: 1px solid rgba(110,168,110,0.08);
+  border-radius: 50%;
+}
+.hero-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--brand-accent);
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 5px 14px;
+  border-radius: 3px;
+  margin-bottom: 16px;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+.hero .subtitle {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 24px;
+}
+.hero-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.hero-metric {
+  padding: 18px 12px;
+  background: rgba(255,255,255,0.04);
+  text-align: center;
+}
+.hero-metric .value {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+}
+.hero-metric .value .accent { color: var(--brand-accent); }
+.hero-metric .label {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  margin-top: 5px;
+}
+
+/* BODY */
+.report-body { padding: 28px 20px 44px; }
+.property-report { background: var(--page-bg); }
+
+.section { margin-bottom: 36px; }
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.section-icon {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.onyx .section-icon.ads { background: rgba(168,139,235,0.12); color: var(--brand-accent); }
+.elysian .section-icon.ads { background: rgba(201,169,110,0.12); color: var(--brand-accent); }
+.camino .section-icon.ads { background: rgba(110,168,110,0.12); color: var(--brand-accent); }
+.section-icon.seo { background: rgba(42,157,110,0.1); color: var(--green); }
+.onyx .section-icon.kw { background: rgba(168,139,235,0.1); color: var(--brand-accent); }
+.elysian .section-icon.kw { background: rgba(106,90,205,0.1); color: #6a5acd; }
+.camino .section-icon.kw { background: rgba(106,90,205,0.1); color: #6a5acd; }
+.section-icon.geo { background: rgba(196,138,26,0.12); color: var(--amber); }
+.section-icon.rep { background: rgba(42,157,110,0.1); color: var(--green); }
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.section-subtitle {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* CARDS & TABLES */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+thead th {
+  text-align: left;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.onyx thead th { background: #f9f7fc; }
+.elysian thead th { background: #faf8f5; }
+.camino thead th { background: #f6f8f4; }
+thead th:not(:first-child) { text-align: right; }
+tbody td {
+  padding: 11px 10px;
+  border-bottom: 1px solid;
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.onyx tbody td { border-bottom-color: #f0edf5; }
+.elysian tbody td { border-bottom-color: #f2efe9; }
+.camino tbody td { border-bottom-color: #eef2eb; }
+tbody td:not(:first-child) { text-align: right; }
+tbody td:first-child {
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: normal;
+  min-width: 120px;
+}
+tbody tr:last-child td { border-bottom: none; }
+tr.total-row td {
+  font-weight: 600;
+  color: var(--text-primary);
+  border-top: 2px solid var(--border);
+}
+.onyx tr.total-row td { background: #f9f7fc; }
+.elysian tr.total-row td { background: #faf8f5; }
+.camino tr.total-row td { background: #f6f8f4; }
+tr.highlight td:first-child { border-left: 3px solid var(--brand-accent); padding-left: 7px; }
+
+/* STAT GRID */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.stat-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+}
+.stat-card .stat-label {
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  margin-bottom: 5px;
+}
+.stat-card .stat-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.stat-card .stat-change {
+  font-size: 11px;
+  font-weight: 600;
+  margin-top: 3px;
+}
+.up { color: var(--green); }
+.down { color: var(--red); }
+.neutral { color: var(--text-muted); }
+
+/* TAGS */
+.tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.tag-green { background: var(--green-bg); color: var(--green); }
+.tag-red { background: var(--red-bg); color: var(--red); }
+.tag-amber { background: var(--amber-bg); color: var(--amber); }
+.tag-gray { background: #eeedf2; color: var(--text-muted); }
+
+.kd-pill {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 10px;
+  min-width: 28px;
+  text-align: center;
+}
+.kd-easy { background: #e0f5ea; color: #1a8a52; }
+.kd-med { background: #fef0d5; color: #a07015; }
+.kd-hard { background: #fce4e4; color: #b83030; }
+
+.rank-cell { font-weight: 600; }
+.rank-1 { color: var(--green); }
+.rank-top10 { color: #2a7dd4; }
+.rank-top20 { color: var(--amber); }
+.rank-top30 { color: #b05a1a; }
+.rank-unranked { color: var(--text-muted); font-weight: 400; }
+
+.change-positive { color: var(--green); font-weight: 600; }
+.change-negative { color: var(--red); font-weight: 600; }
+.change-neutral { color: var(--text-muted); }
+
+/* NETWORK BARS */
+.net-bar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.net-bar-label { width: 90px; font-size: 11px; font-weight: 500; color: var(--text-secondary); text-align: right; flex-shrink: 0; }
+.net-bar-track { flex: 1; height: 26px; background: #eeedf2; border-radius: 6px; overflow: hidden; }
+.elysian .net-bar-track { background: #f0eeea; }
+.camino .net-bar-track { background: #eceee9; }
+.net-bar-fill { height: 100%; border-radius: 6px; display: flex; align-items: center; padding: 0 8px; font-size: 10px; font-weight: 600; color: #fff; min-width: 36px; }
+.net-bar-stat { font-size: 11px; color: var(--text-muted); width: 75px; text-align: right; flex-shrink: 0; }
+
+/* INSIGHT */
+.insight-box {
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-top: 16px;
+}
+.onyx .insight-box {
+  background: linear-gradient(135deg, rgba(168,139,235,0.06), rgba(168,139,235,0.02));
+  border: 1px solid rgba(168,139,235,0.2);
+}
+.elysian .insight-box {
+  background: linear-gradient(135deg, rgba(201,169,110,0.06), rgba(201,169,110,0.02));
+  border: 1px solid rgba(201,169,110,0.2);
+}
+.camino .insight-box {
+  background: linear-gradient(135deg, rgba(110,168,110,0.06), rgba(110,168,110,0.02));
+  border: 1px solid rgba(110,168,110,0.2);
+}
+.insight-box .insight-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--brand-accent);
+  margin-bottom: 6px;
+}
+.insight-box p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* HIGHLIGHT CARDS */
+.highlight-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 16px;
+}
+.highlight-card {
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+}
+.highlight-card .hl-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+.highlight-card .hl-value {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
+}
+.highlight-card .hl-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+/* NEXT STEPS */
+.next-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+.next-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+}
+.next-card p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* AI LEADERBOARD */
+.ai-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.ai-hero-card {
+  background: linear-gradient(135deg, #0f0f0f, #2a1a3e);
+  border-radius: 12px;
+  padding: 22px 16px;
+  text-align: center;
+  color: #fff;
+}
+.ai-hero-card .ai-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--brand-accent);
+  margin-bottom: 8px;
+}
+.ai-hero-card .ai-value {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1;
+}
+.ai-hero-card .ai-sub {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  margin-top: 5px;
+}
+
+/* REPUTATION */
+.rep-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.rep-card {
+  background: linear-gradient(135deg, var(--green-bg), rgba(42,157,110,0.04));
+  border: 1px solid rgba(42,157,110,0.2);
+  border-radius: 12px;
+  padding: 22px 18px;
+  text-align: center;
+}
+.rep-card .rep-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--green);
+  margin-bottom: 8px;
+}
+.rep-card .rep-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1;
+}
+.rep-card .rep-stars {
+  color: #f5b400;
+  font-size: 16px;
+  margin-top: 6px;
+  letter-spacing: 2px;
+}
+.rep-card .rep-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* BAR CHART */
+.bar-chart { padding: 20px; }
+.bar-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  justify-content: space-between;
+  height: 180px;
+}
+.bar-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  height: 100%;
+  justify-content: flex-end;
+}
+.bar-val { font-size: 11px; font-weight: 600; }
+.bar-fill { width: 100%; border-radius: 6px 6px 0 0; min-height: 4px; }
+.bar-label { font-size: 10px; color: var(--text-muted); }
+
+/* FOOTER */
+.report-footer {
+  text-align: center;
+  padding: 24px 20px;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.report-footer .brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.divider { height: 1px; background: var(--border); margin: 32px 0; }
+
+/* ===== DESKTOP ===== */
+@media (min-width: 768px) {
+  .hero { padding: 60px 56px 50px; }
+  .hero h1 { font-size: 42px; }
+  .hero-metrics { grid-template-columns: repeat(4, 1fr); }
+  .hero-metric { padding: 24px 20px; }
+  .hero-metric .value { font-size: 30px; }
+  .hero-metric .label { font-size: 11px; }
+  .report-body { padding: 40px 56px 60px; }
+  .stat-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .stat-card .stat-value { font-size: 26px; }
+  .next-grid { grid-template-columns: 1fr 1fr; }
+  .ai-hero-grid { grid-template-columns: repeat(3, 1fr); }
+  .ai-hero-card .ai-value { font-size: 48px; }
+  .highlight-card .hl-value { font-size: 32px; }
+  .net-bar-label { width: 120px; }
+  .net-bar-stat { width: 90px; }
+  .report-footer { padding: 30px 56px; }
+  .divider { margin: 40px 0; }
+  .bar-row { height: 160px; }
+  .rep-card .rep-value { font-size: 42px; }
+  .tab-nav-inner { padding: 0 56px; }
+}
+
+@media print {
+  body { background: #fff; }
+  .page { max-width: none; }
+  .tab-nav { display: none; }
+  .property-report { display: block !important; }
+  .property-report + .property-report { page-break-before: always; }
+}
+</style>
+</head>
+<body class="on-onyx">
+
+<!-- TAB NAV -->
+<nav class="tab-nav">
+  <div class="tab-nav-inner">
+    <div class="tab-nav-brand">
+      New Earth Residential
+      <span class="sub">April 2026 Performance Reports</span>
+    </div>
+    <button class="tab-btn for-onyx active" onclick="switchTab('onyx')"><span class="tab-dot onyx-dot"></span>The Onyx</button>
+    <button class="tab-btn for-elysian" onclick="switchTab('elysian')"><span class="tab-dot elysian-dot"></span>Elysian at St. Rose</button>
+    <button class="tab-btn for-camino" onclick="switchTab('camino')"><span class="tab-dot camino-dot"></span>Camino al Norte</button>
+  </div>
+</nav>
+
+<!-- ===== ONYX REPORT ===== -->
+<div class="property-report onyx active" id="report-onyx">
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge">Monthly Performance Report</div>
+    <h1>The Onyx Apartments</h1>
+    <div class="subtitle">Google Ads &amp; SEO Performance — April 2026</div>
+    <div class="hero-metrics">
+      <div class="hero-metric">
+        <div class="value">26,853</div>
+        <div class="label">Impressions</div>
+      </div>
+      <div class="hero-metric">
+        <div class="value"><span class="accent">1,069</span></div>
+        <div class="label">Clicks</div>
+      </div>
+      <div class="hero-metric">
+        <div class="value">$770.43</div>
+        <div class="label">Total Spend</div>
+      </div>
+      <div class="hero-metric">
+        <div class="value">$0.72</div>
+        <div class="label">Avg. CPC</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="report-body">
+
+    <!-- GOOGLE ADS -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon ads">&#9670;</div>
+        <div>
+          <div class="section-title">Google Ads Performance</div>
+          <div class="section-subtitle">Campaign breakdown — all networks</div>
+        </div>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-label">Total spend</div><div class="stat-value">$770.43</div><div class="stat-change down">&#9660; −$88.46 vs Mar</div></div>
+        <div class="stat-card"><div class="stat-label">Total clicks</div><div class="stat-value">1,069</div><div class="stat-change up">&#9650; +180 vs Mar</div></div>
+        <div class="stat-card"><div class="stat-label">Avg. CPC</div><div class="stat-value">$0.72</div><div class="stat-change up">&#9660; −$0.25 vs Mar</div></div>
+        <div class="stat-card"><div class="stat-label">Impressions</div><div class="stat-value">26,853</div><div class="stat-change up">&#9650; +7,110 vs Mar</div></div>
+      </div>
+
+      <div class="card"><div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>Campaign</th><th>Impr.</th><th>Clicks</th><th>Cost</th><th>CPC</th><th>CTR</th>
+          </tr></thead>
+          <tbody>
+            <tr class="highlight"><td>Search — Brand</td><td>2,378</td><td>196</td><td>$195.98</td><td>$1.00</td><td>8.24%</td></tr>
+            <tr class="highlight"><td>Search — Floor Plans</td><td>1,572</td><td>232</td><td>$190.94</td><td>$0.82</td><td>14.76%</td></tr>
+            <tr><td>Search — Location Based</td><td>1,476</td><td>100</td><td>$88.51</td><td>$0.89</td><td>6.78%</td></tr>
+            <tr><td>Search — Dynamic</td><td>940</td><td>76</td><td>$64.50</td><td>$0.85</td><td>8.09%</td></tr>
+            <tr><td>Demand Gen</td><td>4,091</td><td>106</td><td>$22.63</td><td>$0.21</td><td>2.59%</td></tr>
+            <tr class="highlight"><td>Performance Max</td><td>5,597</td><td>239</td><td>$193.73</td><td>$0.81</td><td>4.27%</td></tr>
+            <tr><td>Display Retargeting</td><td>10,799</td><td>120</td><td>$14.14</td><td>$0.12</td><td>1.11%</td></tr>
+            <tr class="total-row"><td>Account Total</td><td>26,853</td><td>1,069</td><td>$770.43</td><td>$0.72</td><td>3.98%</td></tr>
+          </tbody>
+        </table>
+      </div></div>
+
+      <div style="margin-top: 24px;">
+        <div style="font-size: 13px; font-weight: 600; margin-bottom: 14px;">Clicks by campaign type</div>
+        <div class="net-bar-row">
+          <div class="net-bar-label">Perf. Max</div>
+          <div class="net-bar-track"><div class="net-bar-fill" style="width:100%;background:linear-gradient(90deg,#a88beb,#8a6bd4);">239 clicks</div></div>
+          <div class="net-bar-stat">$0.81 CPC</div>
+        </div>
+        <div class="net-bar-row">
+          <div class="net-bar-label">Search (all)</div>
+          <div class="net-bar-track"><div class="net-bar-fill" style="width:85%;background:linear-gradient(90deg,#6a5acd,#5548a0);">604 clicks</div></div>
+          <div class="net-bar-stat">$0.89 CPC</div>
+        </div>
+        <div class="net-bar-row">
+          <div class="net-bar-label">Display Retarget.</div>
+          <div class="net-bar-track"><div class="net-bar-fill" style="width:50%;background:linear-gradient(90deg,#d4c4f5,#b8a0e8);">120 clicks</div></div>
+          <div class="net-bar-stat">$0.12 CPC</div>
+        </div>
+        <div class="net-bar-row">
+          <div class="net-bar-label">Demand Gen</div>
+          <div class="net-bar-track"><div class="net-bar-fill" style="width:44%;background:linear-gradient(90deg,#c0aef0,#a88beb);">106 clicks</div></div>
+          <div class="net-bar-stat">$0.21 CPC</div>
+        </div>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-title">&#9733; Key takeaways</div>
+        <p><strong>April saw strong volume growth across the account</strong> — impressions jumped 36% to 26,853 and clicks rose 20% to 1,069, while average CPC dropped from $0.97 to $0.72, a 26% improvement in efficiency. <strong>Performance Max continues to lead the account</strong> with 239 clicks at $0.81 CPC, and <strong>Search — Floor Plans delivered a standout 14.76% CTR</strong>, the highest of any campaign, showing prospects are engaging strongly with floor plan messaging. The new <strong>Display Retargeting campaign</strong> delivered 10,799 impressions at a very efficient $0.12 CPC, reinforcing brand presence for users already familiar with the community. We're continuing to monitor conversion data and optimizing landing pages for Search — Location Based and Demand Gen to match the engagement we're seeing upstream.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SEO -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon seo">&#9650;</div>
+        <div>
+          <div class="section-title">SEO Performance</div>
+          <div class="section-subtitle">Domain authority &amp; backlink health — April 2026</div>
+        </div>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-label">Domain Rating</div><div class="stat-value">17</div><div class="stat-change neutral">&#9644; steady from Mar</div></div>
+        <div class="stat-card"><div class="stat-label">Total backlinks</div><div class="stat-value">107</div><div class="stat-change up">&#9650; +7 from Mar</div></div>
+        <div class="stat-card"><div class="stat-label">Referring domains</div><div class="stat-value">55</div><div class="stat-change up">&#9650; +6 from Mar</div></div>
+        <div class="stat-card"><div class="stat-label">Keywords in Top 3</div><div class="stat-value">5</div><div class="stat-change neutral">&#9644; steady from Mar</div></div>
+      </div>
+
+      <div class="card"><div class="table-wrap">
+        <table>
+          <thead><tr><th>SEO metric</th><th>Apr 2026</th><th>+/−</th><th>Mar 2026</th><th>+/−</th><th>Feb 2026</th></tr></thead>
+          <tbody>
+            <tr><td>Ahrefs Domain Rating</td><td>17</td><td class="change-neutral">0</td><td>17</td><td class="change-neutral">0</td><td>17</td></tr>
+            <tr><td>URL Rating</td><td>6</td><td class="change-neutral">0</td><td>6</td><td class="change-neutral">0</td><td>6</td></tr>
+            <tr><td>Total Backlinks</td><td>107</td><td class="change-positive">+7</td><td>100</td><td class="change-negative">−3</td><td>103</td></tr>
+            <tr><td>Total Referring Domains</td><td>55</td><td class="change-positive">+6</td><td>49</td><td class="change-negative">−5</td><td>54</td></tr>
+            <tr><td>Dofollow Backlinks</td><td>69</td><td class="change-positive">+6</td><td>63</td><td class="change-negative">−2</td><td>65</td></tr>
+            <tr><td>Dofollow Referring Domains</td><td>30</td><td class="change-positive">+3</td><td>27</td><td class="change-negative">−6</td><td>33</td></tr>
+            <tr><td>Keywords in Top 3</td><td>5</td><td class="change-neutral">0</td><td>5</td><td class="change-neutral">0</td><td>5</td></tr>
+            <tr><td>Organic Sessions (GA4)</td><td>666</td><td class="change-negative">−3</td><td>669</td><td class="change-positive">+90</td><td>579</td></tr>
+          </tbody>
+        </table>
+      </div></div>
+
+      <div class="insight-box">
+        <div class="insight-title">&#9733; SEO momentum</div>
+        <p><strong>April was a strong month for link profile growth</strong> — backlinks grew +7 to 107, referring domains grew +6 to 55, and dofollow referring domains rebounded +3 to 30. This reverses the March dip and returns the profile to its strongest position of the year. <strong>Domain Rating holds steady at 17</strong> and the top 3 keyword positions remain locked in at 5. Organic sessions held essentially flat at 666 (−3), showing stability in real traffic even as the link profile expands. The backlink growth this month lays the foundation for keyword ranking improvements in the months ahead.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- KEYWORDS -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon kw">&#9679;</div>
+        <div>
+          <div class="section-title">Keyword Rankings</div>
+          <div class="section-subtitle">Position tracking — April 2026 snapshot</div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text-muted);"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#1a8a52;"></span> Easy (KD 0–9)</div>
+        <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text-muted);"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#a07015;"></span> Medium (KD 10–29)</div>
+        <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text-muted);"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#b83030;"></span> Hard (KD 30+)</div>
+      </div>
+
+      <div style="font-size: 13px; font-weight: 600; margin-bottom: 10px;">Branded keywords</div>
+      <div class="card" style="margin-bottom: 20px;"><div class="table-wrap">
+        <table>
+          <thead><tr><th>Keyword</th><th>Volume</th><th>Apr 2026</th><th>Mar 2026</th><th>Feb 2026</th></tr></thead>
+          <tbody>
+            <tr><td>the onyx</td><td>3,600</td><td class="rank-cell rank-1">1</td><td>1</td><td>1</td></tr>
+            <tr><td>the onyx apartments</td><td>30</td><td class="rank-cell rank-1">1</td><td>1</td><td>1</td></tr>
+            <tr><td>onyx apartment</td><td>12,100</td><td class="rank-cell rank-1">1</td><td>1</td><td>1</td></tr>
+            <tr><td>onyx apartments las vegas</td><td>110</td><td class="rank-cell rank-1">1</td><td>1</td><td>1</td></tr>
+            <tr><td>onyx apartments las vegas photos</td><td>20</td><td class="rank-cell rank-1">1</td><td>1</td><td>1</td></tr>
+          </tbody>
+        </table>
+      </div></div>
+
+      <div style="font-size: 13px; font-weight: 600; margin-bottom: 10px;">Non-branded keywords</div>
+      <div class="card"><div class="table-wrap">
+        <table>
+          <thead><tr><th>Keyword</th><th>Volume</th><th>Apr 2026</th><th>+/−</th><th>Mar 2026</th><th>Feb 2026</th></tr></thead>
+          <tbody>
+            <tr><td>apartments near las vegas strip</td><td>390</td><td class="rank-cell rank-top10">8</td><td class="change-neutral">0</td><td>8</td><td>100+</td></tr>
+            <tr><td>luxury las vegas apartments</td><td>180</td><td class="rank-cell rank-top30">29</td><td class="change-negative">−6</td><td>23</td><td>100+</td></tr>
+            <tr><td>luxury apartments las vegas</td><td>500</td><td class="rank-cell rank-top30">28</td><td class="change-negative">−2</td><td>26</td><td>37</td></tr>
+            <tr><td>las vegas luxury apartments</td><td>500</td><td class="rank-cell rank-top30">28</td><td class="change-negative">−4</td><td>24</td><td>34</td></tr>
+            <tr><td>luxury apartments in las vegas</td><td>500</td><td class="rank-cell rank-top30">33</td><td class="change-negative">−7</td><td>26</td><td>28</td></tr>
+            <tr><td>las vegas apartments</td><td>3,200</td><td class="rank-cell rank-unranked">100+</td><td class="change-neutral">0</td><td>100+</td><td>59</td></tr>
+            <tr><td>apartments for rent las vegas</td><td>1,900</td><td class="rank-cell rank-unranked">100+</td><td class="change-neutral">0</td><td>100+</td><td>100+</td></tr>
+            <tr><td>apartments in las vegas</td><td>2,400</td><td class="rank-cell rank-unranked">100+</td><td class="change-neutral">0</td><td>100+</td><td>100+</td></tr>
+            <tr><td>apartments las vegas</td><td>40,500</td><td class="rank-cell rank-unranked">100+</td><td class="change-neutral">0</td><td>100+</td><td>100+</td></tr>
+            <tr><td>las vegas apartments for rent</td><td>9,900</td><td class="rank-cell rank-unranked">100+</td><td class="change-neutral">0</td><td>100+</td><td>100+</td></tr>
+          </tbody>
+        </table>
+      </div></div>
+
+      <div class="highlight-grid">
+        <div class="highlight-card" style="background:rgba(168,139,235,0.06);border:1px solid rgba(168,139,235,0.15);">
+          <div class="hl-label" style="color:var(--brand-accent);">All 5 brand keywords</div>
+          <div class="hl-value" style="color:var(--brand-accent);">#1</div>
+          <div class="hl-sub">holding strong since July 2024</div>
+        </div>
+        <div class="highlight-card" style="background:var(--green-bg);border:1px solid rgba(42,157,110,0.2);">
+          <div class="hl-label" style="color:var(--green);">Luxury cluster holding</div>
+          <div class="hl-value" style="color:var(--green);">28–33</div>
+          <div class="hl-sub">4 variations stable in range</div>
+        </div>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-title">&#9733; Keyword insights</div>
+        <p><strong>All 5 brand keywords continue to hold the #1 position</strong> — a streak now approaching two years across 15,860+ combined monthly searches. The <strong>"apartments near las vegas strip" breakthrough is holding firm at #8</strong>, a meaningful non-brand ranking. The luxury apartment cluster saw some softening this month, with rankings sliding 2–7 positions, but all four variations remain within the top 35. We're doubling down on content and authority work around these luxury-focused terms to reclaim and push them into the top 20. The strong backlink growth this month (+7 backlinks, +6 referring domains) gives the luxury cluster the link equity it needs to recover.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- AI SEO -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(168,139,235,0.1);color:var(--brand-accent);">&#9733;</div>
+        <div>
+          <div class="section-title">AI Search Visibility</div>
+          <div class="section-subtitle">LLM brand rankings — how AI models recommend The Onyx</div>
+        </div>
+      </div>
+
+      <div class="ai-hero-grid">
+        <div class="ai-hero-card">
+          <div class="ai-label">#1 AI Recommended Brand</div>
+          <div class="ai-value">28%</div>
+          <div class="ai-sub">Visibility across AI models</div>
+        </div>
+        <div class="ai-hero-card">
+          <div class="ai-label">Share of Voice</div>
+          <div class="ai-value">64%</div>
+          <div class="ai-sub">Dominant SOV in Las Vegas market</div>
+        </div>
+        <div class="ai-hero-card">
+          <div class="ai-label">Avg. Position</div>
+          <div class="ai-value">#1.0</div>
+          <div class="ai-sub">Top position in AI responses</div>
+        </div>
+      </div>
+
+      <div class="card"><div class="table-wrap">
+        <table>
+          <thead><tr><th style="width:40px;">#</th><th>Brand</th><th>Visibility</th><th>SOV</th><th>Sentiment</th><th>Position</th></tr></thead>
+          <tbody>
+            <tr style="background:rgba(168,139,235,0.06);">
+              <td style="font-weight:700;color:var(--brand-accent);">1</td>
+              <td style="font-weight:700;color:var(--brand-accent);">The Onyx Apartments</td>
+              <td><span class="tag tag-green">&#9650; 0.16%</span>&nbsp; 28%</td>
+              <td><span style="color:var(--green);font-weight:600;">&#9650; 5.35%</span>&nbsp; <strong>64%</strong></td>
+              <td>60 <span style="color:var(--text-muted);font-size:11px;">+1</span></td>
+              <td style="font-weight:700;">#1.0</td>
+            </tr>
+            <tr><td>2</td><td>Avalon</td><td><span class="tag tag-green">&#9650; 0.74%</span>&nbsp; 7%</td><td><span style="color:var(--green);font-weight:600;">&#9650; 4.73%</span>&nbsp; 17%</td><td>62 <span style="color:var(--text-muted);font-size:11px;">+3</span></td><td>#1.5</td></tr>
+            <tr><td>3</td><td>Gateway</td><td><span class="tag tag-green">&#9650; 1.28%</span>&nbsp; 4%</td><td><span style="color:var(--red);font-weight:600;">&#9660; 0.11%</span>&nbsp; 11%</td><td>64 <span style="color:var(--text-muted);font-size:11px;">+4</span></td><td>#1.2</td></tr>
+            <tr><td>4</td><td>Onyx Uptown</td><td><span style="color:var(--red);font-weight:600;">&#9660; 0.61%</span>&nbsp; 1%</td><td><span style="color:var(--red);font-weight:600;">&#9660; 1.35%</span>&nbsp; 2%</td><td>57 <span style="color:var(--text-muted);font-size:11px;">+1</span></td><td>#1.9</td></tr>
+            <tr><td>5</td><td>Camden</td><td><span style="color:var(--red);font-weight:600;">&#9660; 0.76%</span>&nbsp; 1%</td><td><span style="color:var(--red);font-weight:600;">&#9660; 2.00%</span>&nbsp; 1%</td><td>59 <span style="color:var(--text-muted);font-size:11px;">+1</span></td><td>#1.1</td></tr>
+            <tr><td>6</td><td>Modera</td><td><span style="color:var(--red);font-weight:600;">&#9660; 0.53%</span>&nbsp; 1%</td><td><span style="color:var(--red);font-weight:600;">&#9660; 0.79%</span>&nbsp; 1%</td><td>60 <span style="color:var(--text-muted);font-size:11px;">−9</span></td><td>#1.9</td></tr>
+            <tr><td>7</td><td>Equity Residential</td><td><span style="color:var(--red);font-weight:600;">&#9660; 0.15%</span>&nbsp; 1%</td><td><span style="color:var(--red);font-weight:600;">&#9660; 0.33%</span>&nbsp; 1%</td><td>65 <span style="color:var(--text-muted);font-size:11px;">−4</span></td><td>#1.3</td></tr>
+          </tbody>
+        </table>
+      </div></div>
+
+      <div class="insight-box">
+        <div class="insight-title">&#9733; AI Search dominance</div>
+        <p><strong>The Onyx expanded its AI search lead in April</strong> — Share of Voice jumped +5.35% to a commanding 64%, now nearly 4× the nearest competitor (Avalon at 17% SOV). Visibility held strong at 28% (+0.16%), and sentiment improved +1 to 60. When users ask AI assistants like ChatGPT, Gemini, or Perplexity about Las Vegas apartments, The Onyx is the first recommendation — and the gap is widening. National brands like Camden and Equity Residential rank well below The Onyx in AI visibility, confirming the strong local authority we've built through content, reviews, and structured data optimization.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- GEOFENCING -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon geo">&#9678;</div>
+        <div>
+          <div class="section-title">Geofencing Performance</div>
+          <div class="section-subtitle">Competitor property targeting &amp; ad creative breakdown</div>
+        </div>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-label">Total impressions</div><div class="stat-value">7,603</div></div>
+        <div class="stat-card"><div class="stat-label">Total clicks</div><div class="stat-value">11</div></div>
+        <div class="stat-card"><div class="stat-label">Avg. CTR</div><div class="stat-value">0.14%</div></div>
+        <div class="stat-card"><div class="stat-label">Properties targeted</div><div class="stat-value">6</div></div>
+      </div>
+
+      <div style="font-size: 13px; font-weight: 600; margin-bottom: 10px;">Targeted properties</div>
+      <div class="card" style="margin-bottom: 20px;"><div class="table-wrap">
+        <table>
+          <thead><tr><th>Property</th><th>Address</th><th>ZIP</th><th>Impr.</th><th>CTR</th><th>Clicks</th></tr></thead>
+          <tbody>
+            <tr><td>Las Vegas Grand</td><td>818 E Flamingo Rd</td><td>89119</td><td>2,165</td><td>0.09%</td><td>2</td></tr>
+            <tr class="highlight"><td>Jade</td><td>3150 W Twain Ave</td><td>89103</td><td>1,534</td><td>0.26%</td><td>4</td></tr>
+            <tr><td>Ainsley at The Collective</td><td>3930 Paradise Rd</td><td>89169</td><td>1,469</td><td>0.14%</td><td>2</td></tr>
+            <tr class="highlight"><td>Saxon Apartment</td><td>900 E Desert Inn Rd</td><td>89109</td><td>1,225</td><td>0.24%</td><td>3</td></tr>
+            <tr><td>Elysian at The Palms</td><td>3850 W Nevso Dr</td><td>89103</td><td>625</td><td>0.00%</td><td>0</td></tr>
+            <tr><td>Aura</td><td>3240 W Harmon Ave</td><td>89103</td><td>585</td><td>0.00%</td><td>0</td></tr>
+          </tbody>
+        </table>
+      </div></div>
+
+      <div style="font-size: 13px; font-weight: 600; margin-bottom: 10px;">Ad creative performance</div>
+      <div class="card"><div class="table-wrap">
+        <table>
+          <thead><tr><th>Creative</th><th>Size</th><th>Impr.</th><th>Clicks</th><th>CTR</th></tr></thead>
+          <tbody>
+            <tr class="highlight"><td>2_300x50</td><td>300×50</td><td>1,895</td><td>3</td><td>0.16%</td></tr>
+            <tr><td>1_300x50</td><td>300×50</td><td>1,844</td><td>1</td><td>0.05%</td></tr>
+            <tr><td>1_300x250</td><td>300×250</td><td>1,666</td><td>1</td><td>0.06%</td></tr>
+            <tr class="highlight"><td>2_300x250</td><td>300×250</td><td>1,561</td><td>5</td><td>0.32%</td></tr>
+            <tr><td>2_728x90</td><td>728×90</td><td>272</td><td>0</td><td>0.00%</td></tr>
+            <tr class="highlight"><td>1_728x90</td><td>728×90</td><td>241</td><td>1</td><td>0.41%</td></tr>
+          </tbody>
+        </table>
+      </div></div>
+
+      <div class="insight-box">
+        <div class="insight-title">&#9733; Geofencing insights</div>
+        <p><strong>Jade and Saxon Apartment are the top-performing targets</strong> with 0.26% and 0.24% CTRs respectively — meaningfully above the 0.14% program average, suggesting residents at those properties are more actively engaging with our messaging. On the creative side, <strong>the 2_300x250 creative delivered the strongest engagement</strong> at 0.32% CTR with 5 clicks, and the 1_728x90 leaderboard led on CTR (0.41%) despite low impression volume. We're reallocating impressions toward the higher-engagement creatives and exploring additional targeting variations for Jade and Saxon residents to capitalize on their stronger interest.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ORGANIC TRAFFIC -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon seo">&#9679;</div>
+        <div>
+          <div class="section-title">Organic Traffic</div>
+          <div class="section-subtitle">GA4 organic sessions — trailing 6 months</div>
+        </div>
+      </div>
+
+      <div class="card bar-chart">
+        <div class="bar-row">
+          <div class="bar-col">
+            <div class="bar-val">528</div>
+            <div class="bar-fill" style="background:linear-gradient(180deg,#a88beb,#8a6bd4);height:76px;"></div>
+            <div class="bar-label">Nov</div>
+          </div>
+          <div class="bar-col">
+            <div class="bar-val">587</div>
+            <div class="bar-fill" style="background:linear-gradient(180deg,#a88beb,#8a6bd4);height:84px;"></div>
+            <div class="bar-label">Dec</div>
+          </div>
+          <div class="bar-col">
+            <div class="bar-val">696</div>
+            <div class="bar-fill" style="background:linear-gradient(180deg,#a88beb,#8a6bd4);height:100px;"></div>
+            <div class="bar-label">Jan</div>
+          </div>
+          <div class="bar-col">
+            <div class="bar-val">579</div>
+            <div class="bar-fill" style="background:linear-gradient(180deg,#d4c4f5,#c0aef0);height:83px;"></div>
+            <div class="bar-label">Feb</div>
+          </div>
+          <div class="bar-col">
+            <div class="bar-val">669</div>
+            <div class="bar-fill" style="background:linear-gradient(180deg,#a88beb,#8a6bd4);height:96px;"></div>
+            <div class="bar-label">Mar</div>
+          </div>
+          <div class="bar-col">
+            <div class="bar-val" style="color:var(--green);">666</div>
+            <div class="bar-fill" style="background:linear-gradient(180deg,#2a9d6e,#1f7a55);height:96px;"></div>
+            <div class="bar-label" style="font-weight:600;color:var(--text-primary);">Apr</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-title">&#9733; Traffic trend</div>
+        <p>Organic sessions <strong>held essentially flat in April at 666</strong> (−3 from March's 669), maintaining the healthy level established last month. Traffic is now clearly stabilizing in the 580–700 range — a meaningful step up from the 528 low in November. With April's backlink growth (+7 new backlinks, +6 new referring domains) strengthening the profile, we expect this gradual upward trend to continue as the luxury apartment keyword cluster regains momentum.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- NEXT STEPS -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon ads" style="background:rgba(15,15,15,0.08);color:#0f0f0f;">&#10148;</div>
+        <div>
+          <div class="section-title">What We're Working On</div>
+          <div class="section-subtitle">Focus areas for May 2026</div>
+        </div>
+      </div>
+      <div class="next-grid">
+        <div class="next-card" style="border-left:3px solid var(--brand-accent);">
+          <div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--brand-accent);margin-bottom:8px;">Google Ads</div>
+          <p>We're scaling Performance Max further given its consistent lead in click volume (239 clicks in April) and efficient $0.81 CPC. Search — Floor Plans is getting expanded targeting based on its outstanding 14.76% CTR. The new Display Retargeting campaign is performing efficiently and we'll continue optimizing creative rotation to drive more downstream engagement.</p>
+        </div>
+        <div class="next-card" style="border-left:3px solid var(--green);">
+          <div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--green);margin-bottom:8px;">SEO</div>
+          <p>We're focused on recovering the luxury apartment cluster — four variations slid slightly this month and the backlink growth (+7, +6 ref domains) gives us fresh authority to push them back up. We're continuing to build content around the Strip-proximity theme after holding "apartments near las vegas strip" at #8 for two consecutive months.</p>
+        </div>
+        <div class="next-card" style="border-left:3px solid var(--amber);">
+          <div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--amber);margin-bottom:8px;">Geofencing</div>
+          <p>We're shifting impression weight toward Jade and Saxon Apartment where engagement is strongest (0.26% and 0.24% CTRs). Creative 2_300x250 will get more rotation given its 0.32% CTR, and we're evaluating underperforming properties for potential replacement with higher-converting targets.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="report-footer">
+    <div class="brand">The Onyx Apartments</div>
+    Report generated April 2026 &nbsp;·&nbsp; Data sources: Google Ads, Ahrefs, Google Analytics 4, Profound, Geofencing platform, Google Business Profile
+  </div>
+
+</div>
+</div>
+<!-- ===== END ONYX ===== -->
+
+
+<!-- ===== ELYSIAN REPORT ===== -->
+<div class="property-report elysian" id="report-elysian">
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge">Monthly Performance Report</div>
+    <h1>Elysian at St. Rose</h1>
+    <div class="subtitle">Google Ads &amp; SEO Performance — April 2026</div>
+    <div class="hero-metrics">
+      <div class="hero-metric">
+        <div class="value">80,433</div>
+        <div class="label">Impressions</div>
+      </div>
+      <div class="hero-metric">
+        <div class="value"><span class="accent">1,472</span></div>
+        <div class="label">Clicks</div>
+      </div>
+      <div class="hero-metric">
+        <div class="value">$725.32</div>
+        <div class="label">Total Spend</div>
+      </div>
+      <div class="hero-metric">
+        <div class="value">$0.49</div>
+        <div class="label">Avg. CPC</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="report-body">
+
+    <!-- GOOGLE ADS -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon ads">&#9670;</div>
+        <div>
+          <div class="section-title">Google Ads Performance</div>
+          <div class="section-subtitle">Campaign breakdown — all networks</div>
+        </div>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-label">Total spend</div><div class="stat-value">$725.32</div><div class="stat-change down">&#9660; −$131.52 vs Mar</div></div>
+        <div class="stat-card"><div class="stat-label">Total clicks</div><div class="stat-value">1,472</div><div class="stat-change up">&#9650; +619 vs Mar</div></div>
+        <div class="stat-card"><div class="stat-label">Avg. CPC</div><div class="stat-value">$0.49</div><div class="stat-change up">&#9660; −$0.51 vs Mar</div></div>
+        <div class="stat-card"><div class="stat-label">Impressions</div><div class="stat-value">80,433</div><div class="stat-change up">&#9650; +57,801 vs Mar</div></div>
+      </div>
+
+      <div class="card"><div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>Campaign</th><th>Impr.</th><th>Clicks</th><th>Cost</th><th>CPC</th><th>CTR</th>
+          </tr></thead>
+          <tbody>
+            <tr class="highlight"><td>Search — Brand</td><td>254</td><td>77</td><td>$138.86</td><td>$1.80</td><td>30.31%</td></tr>
+            <tr class="highlight"><td>Search — Floor Plans</td><td>1,367</td><td>137</td><td>$136.07</td><td>$0.99</td><td>10.02%</td></tr>
+            <tr><td>Search — Location Based</td><td>1,920</td><td>180</td><td>$180.62</td><td>$1.00</td><td>9.38%</td></tr>
+            <tr><td>Search — Dynamic</td><td>326</td><td>24</td><td>$21.71</td><td>$0.90</td><td>7.36%</td></tr>
+            <tr><td>Demand Gen</td><td>1,997</td><td>79</td><td>$33.10</td><td>$0.42</td><td>3.96%</td></tr>
+            <tr><td>Display — Prospecting</td><td>16,180</td><td>146</td><td>$30.02</td><td>$0.21</td><td>0.90%</td></tr>
+            <tr><td>Display — Retargeting</td><td>2,516</td><td>36</td><td>$4.22</td><td>$0.12</td><td>1.43%</td></tr>
+            <tr class="highlight"><td>Performance Max</td><td>55,873</td><td>793</td><td>$180.72</td><td>$0.23</td><td>1.42%</td></tr>
+            <tr class="total-row"><td>Account Total</td><td>80,433</td><td>1,472</td><td>$725.32</td><td>$0.49</td><td>1.83%</td></tr>
+          </tbody>
+        </table>
+      </div></div>
+
+      <div style="margin-top: 24px;">
+        <div style="font-size: 13px; font-weight: 600; margin-bottom: 14px;">Clicks by campaign type</div>
+        <div class="net-bar-row">
+          <div class="net-bar-label">Perf. Max</div>
+          <div class="net-bar-track"><div class="net-bar-fill" style="width:100%;background:linear-gradient(90deg,#c9a96e,#b8944f);">793 clicks</div></div>
+          <div class="net-bar-stat">$0.23 CPC</div>
+        </div>
+        <div class="net-bar-row">
+          <div class="net-bar-label">Search (all)</div>
+          <div class="net-bar-track"><div class="net-bar-fill" style="width:53%;background:linear-gradient(90deg,#6a5acd,#5548a0);">418 clicks</div></div>
+          <div class="net-bar-stat">$1.14 CPC</div>
+        </div>
+        <div class="net-bar-row">
+          <div class="net-bar-label">Display (all)</div>
+          <div class="net-bar-track"><div class="net-bar-fill" style="width:23%;background:linear-gradient(90deg,#e8d5b0,#c9a96e);">182 clicks</div></div>
+          <div class="net-bar-stat">$0.19 CPC</div>
+        </div>
+        <div class="net-bar-row">
+          <div class="net-bar-label">Demand Gen</div>
+          <div class="net-bar-track"><div class="net-bar-fill" style="width:10%;background:linear-gradient(90deg,#d4c4a0,#b8944f);">79 clicks</div></div>
+          <div class="net-bar-stat">$0.42 CPC</div>
+        </div>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-title">&#9733; Key takeaways</div>
+        <p><strong>April was a massive volume month for Elysian</strong> — impressions jumped 3.5× to 80,433 and clicks nearly doubled to 1,472, while average CPC fell 51% from $1.00 to $0.49. <strong>Performance Max drove the bulk of this growth</strong> with 793 clicks at $0.23 CPC — 55% of total clicks and exceptional efficiency. <strong>Search — Brand is converting prospect intent at a staggering 30.31% CTR</strong>, the strongest engagement signal in the account, and <strong>Search — Floor Plans held a healthy 10.02% CTR</strong>. The new Display Retargeting campaign delivered 2,516 impressions at $0.12 CPC to reinforce brand presence, and Display Prospecting continues to build top-of-funnel awareness with over 16,000 impressions. We're focused on optimizing Location Based landing pages and evaluating Demand Gen for further efficiency gains.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SEO -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon seo">&#9650;</div>
+        <div>
+          <div class="section-title">SEO Performance</div>
+          <div class="section-subtitle">Domain authority &amp; backlink health — April 2026</div>
+        </div>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-label">Domain Rating</div><div class="stat-value">10</div><div class="stat-change up">&#9650; +1 from Mar</div></div>
+        <div class="stat-card"><div class="stat-label">Total backlinks</div><div class="stat-value">102</div><div class="stat-change up">&#9650; +8 from Mar</div></div>
+        <div class="stat-card"><div class="stat-label">Referring domains</div><div class="stat-value">61</div><div class="stat-change up">&#9650; +4 from Mar</div></div>
+        <div class="stat-card"><div class="stat-label">Keywords in Top 3</div><div class="stat-value">11</div><div class="stat-change up">&#9650; +10 from Mar</div></div>
+      </div>
+
+      <div class="card"><div class="table-wrap">
+        <table>
+          <thead><tr><th>SEO metric</th><th>Apr 2026</th><th>+/−</th><th>Mar 2026</th><th>+/−</th><th>Feb 2026</th></tr></thead>
+          <tbody>
+            <tr><td>Ahrefs Domain Rating</td><td>10</td><td class="change-positive">+1</td><td>9</td><td class="change-positive">+1</td><td>8</td></tr>
+            <tr><td>URL Rating</td><td>5</td><td class="change-neutral">0</td><td>5</td><td class="change-neutral">0</td><td>5</td></tr>
+            <tr><td>Total Backlinks</td><td>102</td><td class="change-positive">+8</td><td>94</td><td class="change-positive">+3</td><td>91</td></tr>
+            <tr><td>Total Referring Domains</td><td>61</td><td class="change-positive">+4</td><td>57</td><td class="change-positive">+8</td><td>49</td></tr>
+            <tr><td>Dofollow Backlinks</td><td>63</td><td class="change-positive">+3</td><td>60</td><td class="change-positive">+20</td><td>40</td></tr>
+            <tr><td>Dofollow Referring Domains</td><td>36</td><td class="change-positive">+1</td><td>35</td><td class="change-positive">+8</td><td>27</td></tr>
+            <tr><td>Keywords in Top 3</td><td>11</td><td class="change-positive">+10</td><td>1</td><td class="change-neutral">0</td><td>1</td></tr>
+            <tr><td>Organic Sessions (GA4)</td><td>533</td><td class="change-neutral">—</td><td>—</td><td class="change-neutral">—</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div></div>
+
+      <div class="insight-box">
+        <div class="insight-title">&#9733; SEO momentum</div>
+        <p><strong>April was a breakthrough month for Elysian's SEO</strong>. Domain Rating climbed to 10 (+1) and <strong>Keywords in Top 3 jumped from 1 to 11</strong> — a massive 10× improvement driven by the brand keyword ranking #1 and strong positioning for location-specific searches. Backlinks grew +8 to 102 and referring domains grew +4 to 61, continuing the steady authority-building progress. The link profile has now more than doubled since November 2025 (40 → 102). With momentum this strong, the next focus is turning ranking wins into organic session growth.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- KEYWORDS -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon kw">&#9679;</div>
+        <div>
+          <div class="section-title">Keyword Rankings</div>
+          <div class="section-subtitle">Position tracking — April 2026 snapshot</div>
+        </div>
+      </div>
+
+      <div style="font-size: 13px; font-weight: 600; margin-bottom: 10px;">Brand &amp; core keywords</div>
+      <div class="card" style="margin-bottom: 20px;"><div class="table-wrap">
+        <table>
+          <thead><tr><th>Keyword</th><th>Volume</th><th>Apr 2026</th><th>+/−</th><th>Mar 2026</th></tr></thead>
+          <tbody>
+            <tr><td>elysian at st rose</td><td>10</td><td class="rank-cell rank-1">1</td><td class="change-neutral">0</td><td>1</td></tr>
+            <tr><td>henderson luxury apartments</td><td>10</td><td class="rank-cell rank-top10">10</td><td class="change-neutral">0</td><td>10</td></tr>
+            <tr><td>luxury apartments henderson nv</td><td>10</td><td class="rank-cell rank-top20">14</td><td class="change-negative">−5</td><td>9</td></tr>
+            <tr><td>luxury apartments in henderson nv</td><td>10</td><td class="rank-cell rank-top20">15</td><td class="change-negative">−6</td><td>9</td></tr>
+            <tr><td>luxury apartments in henderson</td><td>1,300</td><td class="rank-cell rank-top20">19</td><td class="change-negative">−7</td><td>12</td></tr>
+            <tr><td>new apartments henderson nv</td><td>260</td><td class="rank-cell rank-top30">21</td><td class="change-negative">−8</td><td>13</td></tr>
+          </tbody>
+        </table>
+      </div></div>
+
+      <div style="font-size: 13px; font-weight: 600; margin-bottom: 10px;">High-opportunity unranked keywords</div>
+      <div class="card"><div class="table-wrap">
+        <table>
+          <thead><tr><th>Keyword</th><th>Volume</th><th>Apr 2026</th><th>Mar 2026</th></tr></thead>
+          <tbody>
+            <tr><td>apartments henderson nv</td><td>5,400</td><td class="rank-cell rank-unranked">100+</td><td>100+</td></tr>
+            <tr><td>1 bedroom apartments henderson nv</td><td>590</td><td class="rank-cell rank-unranked">100+</td><td>100+</td></tr>
+            <tr><td>henderson nv apartments for rent</td><td>480</td><td class="rank-cell rank-unranked">100+</td><td>100+</td></tr>
+            <tr><td>2 bedroom apartments henderson nv</td><td>480</td><td class="rank-cell rank-unranked">100+</td><td>100+</td></tr>
+            <tr><td>apartments in henderson nv</td><td>320</td><td class="rank-cell rank-unranked">100+</td><td>100+</td></tr>
+            <tr><td>apartments near henderson nv</td><td>170</td><td class="rank-cell rank-unranked">100+</td><td>100+</td></tr>
+            <tr><td>henderson nv apartments</td><td>110</td><td class="rank-cell rank-unranked">100+</td><td>100+</td></tr>
+            <tr><td>pet friendly apartments in henderson nv</td><td>110</td><td class="rank-cell rank-unranked">100+</td><td>100+</td></tr>
+            <tr><td>affordable apartments in henderson nv</td><td>50</td><td class="rank-cell rank-unranked">100+</td><td>100+</td></tr>
+          </tbody>
+        </table>
+      </div></div>
+
+      <div class="highlight-grid">
+        <div class="highlight-card" style="background:rgba(201,169,110,0.08);border:1px solid rgba(201,169,110,0.2);">
+          <div class="hl-label" style="color:var(--brand-accent);">Brand keyword</div>
+          <div class="hl-value" style="color:var(--brand-accent);">#1</div>
+          <div class="hl-sub">"elysian at st rose" holding</div>
+        </div>
+        <div class="highlight-card" style="background:var(--green-bg);border:1px solid rgba(42,157,110,0.2);">
+          <div class="hl-label" style="color:var(--green);">Keywords in Top 3</div>
+          <div class="hl-value" style="color:var(--green);">11</div>
+          <div class="hl-sub">up from 1 in March</div>
+        </div>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-title">&#9733; Keyword insights</div>
+        <p><strong>The brand keyword "elysian at st rose" continues holding at #1</strong>, and <strong>"henderson luxury apartments" stays locked at #10</strong>. The luxury apartment cluster saw some softening this month as rankings slid 5–8 positions, a natural fluctuation as competitors have been actively building their own authority. The bigger story is on the Top 3 side: total keywords in positions 1–3 grew from 1 to 11 this month, showing strong ranking depth across the broader keyword set. The high-volume generic terms (5,400 searches/mo for "apartments henderson nv" alone) remain the long-term opportunity as domain authority continues to grow — April's backlink growth supports that trajectory.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- GEOFENCING -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon geo">&#9678;</div>
+        <div>
+          <div class="section-title">Geofencing Performance</div>
+          <div class="section-subtitle">Competitor property targeting &amp; ad creative breakdown</div>
+        </div>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-label">Total impressions</div><div class="stat-value">30,670</div></div>
+        <div class="stat-card"><div class="stat-label">Total clicks</div><div class="stat-value">35</div></div>
+        <div class="stat-card"><div class="stat-label">Avg. CTR</div><div class="stat-value">0.11%</div></div>
+        <div class="stat-card"><div class="stat-label">Locations targeted</div><div class="stat-value">10</div></div>
+      </div>
+
+      <div style="font-size: 13px; font-weight: 600; margin-bottom: 10px;">Targeted locations</div>
+      <div class="card" style="margin-bottom: 20px;"><div class="table-wrap">
+        <table>
+          <thead><tr><th>Location</th><th>Address</th><th>ZIP</th><th>Impr.</th><th>CTR</th><th>Clicks</th></tr></thead>
+          <tbody>
+            <tr class="highlight"><td>The Aviator</td><td>3660 St. Rose Pkwy</td><td>89052</td><td>12,091</td><td>0.12%</td><td>15</td></tr>
+            <tr><td>EoS Fitness</td><td>3511 St Rose Pkwy</td><td>89052</td><td>4,649</td><td>0.11%</td><td>5</td></tr>
+            <tr><td>Smith's</td><td>9750 S Maryland Pkwy</td><td>89183</td><td>4,449</td><td>0.11%</td><td>5</td></tr>
+            <tr><td>Arista Apartments</td><td>375 E Starr Ave</td><td>89193</td><td>3,582</td><td>0.08%</td><td>3</td></tr>
+            <tr class="highlight"><td>Grocery Outlet</td><td>3499 St Rose Pkwy Ste 120</td><td>89052</td><td>2,350</td><td>0.17%</td><td>4</td></tr>
+            <tr class="highlight"><td>Sprouts</td><td>1140 E Silverado Ranch Blvd</td><td>89183</td><td>1,242</td><td>0.16%</td><td>2</td></tr>
+            <tr><td>Sante</td><td>175 E Bruner Ave</td><td>89044</td><td>880</td><td>0.11%</td><td>1</td></tr>
+            <tr><td>LVB</td><td>11611 Las Vegas Blvd S</td><td>89183</td><td>738</td><td>0.00%</td><td>0</td></tr>
+            <tr><td>Ilumina at Raiders Way</td><td>3610 Sunridge Hts Pkwy</td><td>89052</td><td>364</td><td>0.00%</td><td>0</td></tr>
+            <tr><td>Planet Fitness</td><td>9850 S Maryland Pkwy</td><td>89183</td><td>325</td><td>0.00%</td><td>0</td></tr>
+          </tbody>
+        </table>
+      </div></div>
+
+      <div style="font-size: 13px; font-weight: 600; margin-bottom: 10px;">Ad creative performance</div>
+      <div class="card"><div class="table-wrap">
+        <table>
+          <thead><tr><th>Creative</th><th>Size</th><th>Impr.</th><th>Clicks</th><th>CTR</th></tr></thead>
+          <tbody>
+            <tr><td>2.png</td><td>300×50</td><td>5,687</td><td>5</td><td>0.09%</td></tr>
+            <tr><td>1.png</td><td>300×50</td><td>5,617</td><td>6</td><td>0.11%</td></tr>
+            <tr class="highlight"><td>1_300x50</td><td>300×50</td><td>3,882</td><td>10</td><td>0.26%</td></tr>
+            <tr><td>2__300x50</td><td>300×50</td><td>3,835</td><td>2</td><td>0.05%</td></tr>
+            <tr><td>2_300x250</td><td>300×250</td><td>1,605</td><td>2</td><td>0.12%</td></tr>
+            <tr><td>3_300x250</td><td>300×250</td><td>1,569</td><td>2</td><td>0.13%</td></tr>
+            <tr><td>3_728x90</td><td>728×90</td><td>1,559</td><td>2</td><td>0.13%</td></tr>
+            <tr><td>4_300x250</td><td>300×250</td><td>1,480</td><td>1</td><td>0.07%</td></tr>
+            <tr class="highlight"><td>1_728x90</td><td>728×90</td><td>1,472</td><td>2</td><td>0.14%</td></tr>
+            <tr class="highlight"><td>2_728x90</td><td>728×90</td><td>1,424</td><td>2</td><td>0.14%</td></tr>
+            <tr><td>1_300x250</td><td>300×250</td><td>1,375</td><td>0</td><td>0.00%</td></tr>
+            <tr class="total-row"><td>Total</td><td></td><td>30,670</td><td>35</td><td>0.11%</td></tr>
+          </tbody>
+        </table>
+      </div></div>
+
+      <div class="insight-box">
+        <div class="insight-title">&#9733; Geofencing insights</div>
+        <p><strong>The Aviator is the standout performer</strong> — 12,091 impressions and 15 clicks (0.12% CTR) make it the top-producing geofence in the program by a wide margin. Nearby retail locations are also pulling their weight: <strong>Grocery Outlet leads all locations on CTR at 0.17%</strong>, and Sprouts follows closely at 0.16%, both above the program average of 0.11%. On creative, <strong>the 1_300x50 banner is dominating engagement</strong> with a 0.26% CTR and 10 clicks — more than 2× the next-best creative. The 728×90 leaderboard formats are consistently strong performers. We're shifting weight toward The Aviator, Grocery Outlet, and Sprouts, and prioritizing the 1_300x50 creative across the rotation.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- REPUTATION -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon rep">&#9733;</div>
+        <div>
+          <div class="section-title">Reputation Management</div>
+          <div class="section-subtitle">Google Reviews — current snapshot</div>
+        </div>
+      </div>
+
+      <div class="rep-grid">
+        <div class="rep-card">
+          <div class="rep-label">Google Rating</div>
+          <div class="rep-value">4.3</div>
+          <div class="rep-stars">&#9733; &#9733; &#9733; &#9733; &#9734;</div>
+          <div class="rep-sub">out of 5 stars</div>
+        </div>
+        <div class="rep-card">
+          <div class="rep-label">Total Reviews</div>
+          <div class="rep-value">128</div>
+          <div class="rep-sub" style="margin-top:12px;">verified Google reviews</div>
+        </div>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-title">&#9733; Why reputation matters</div>
+        <p>A <strong>4.3-star rating backed by 128 Google reviews</strong> is a strong reputation foundation — and the 128-review count is actually larger than The Onyx's (105 reviews), signaling meaningful resident engagement. Review sentiment feeds both local SEO authority and AI Search recommendations. We're continuing resident communication and post-tour follow-ups to grow the review base, and focusing on strategies to lift the overall star rating toward the 4.5+ range.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- NEXT STEPS -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon ads" style="background:rgba(26,26,46,0.08);color:#1a1a2e;">&#10148;</div>
+        <div>
+          <div class="section-title">What We're Working On</div>
+          <div class="section-subtitle">Focus areas for May 2026</div>
+        </div>
+      </div>
+      <div class="next-grid">
+        <div class="next-card" style="border-left:3px solid var(--brand-accent);">
+          <div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--brand-accent);margin-bottom:8px;">Google Ads</div>
+          <p>We're scaling Performance Max further — it drove 55% of all clicks in April at an exceptional $0.23 CPC. Search — Brand's 30.31% CTR confirms strong prospect intent, and we'll expand Search — Floor Plans based on its 10.02% CTR strength. We're evaluating landing page conversion paths for Search — Location Based and Demand Gen for further efficiency gains.</p>
+        </div>
+        <div class="next-card" style="border-left:3px solid var(--green);">
+          <div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--green);margin-bottom:8px;">SEO</div>
+          <p>The 10× growth in Top 3 keywords (1 → 11) is a major win — we're turning that ranking depth into organic traffic. Top priority is creating dedicated landing pages for the high-volume unranked terms: "apartments henderson nv" (5,400), "1 bedroom apartments henderson nv" (590), and "henderson nv apartments for rent" (480). April's backlink growth supports pushing the luxury cluster back into the top 10.</p>
+        </div>
+        <div class="next-card" style="border-left:3px solid var(--amber);">
+          <div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--amber);margin-bottom:8px;">Geofencing</div>
+          <p>We're shifting more impression weight to The Aviator (12,091 imp / 15 clicks) and the top retail locations — Grocery Outlet (0.17% CTR) and Sprouts (0.16% CTR). Creative 1_300x50 gets expanded rotation given its 0.26% CTR, and we're evaluating underperforming locations (LVB, Planet Fitness, Ilumina) for replacement.</p>
+        </div>
+        <div class="next-card" style="border-left:3px solid var(--green);">
+          <div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--green);margin-bottom:8px;">Reputation</div>
+          <p>The 128-review base is solid. We're focused on quality — implementing post-tour and post-move-in review request strategies designed to drive the 4.3 overall rating toward 4.5+ as the review count grows. Higher ratings compound SEO and AI Search visibility.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="report-footer">
+    <div class="brand">Elysian at St. Rose</div>
+    Report generated April 2026 &nbsp;·&nbsp; Data sources: Google Ads, Ahrefs, Google Analytics 4, Geofencing platform, Google Business Profile
+  </div>
+
+</div>
+</div>
+<!-- ===== END ELYSIAN ===== -->
+
+
+<!-- ===== CAMINO AL NORTE REPORT ===== -->
+<div class="property-report camino" id="report-camino">
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge">Monthly Performance Report</div>
+    <h1>Camino al Norte</h1>
+    <div class="subtitle">Google Ads &amp; SEO Performance — April 2026</div>
+    <div class="hero-metrics">
+      <div class="hero-metric">
+        <div class="value">18,332</div>
+        <div class="label">Impressions</div>
+      </div>
+      <div class="hero-metric">
+        <div class="value"><span class="accent">1,201</span></div>
+        <div class="label">Clicks</div>
+      </div>
+      <div class="hero-metric">
+        <div class="value">$775.22</div>
+        <div class="label">Total Spend</div>
+      </div>
+      <div class="hero-metric">
+        <div class="value">$0.65</div>
+        <div class="label">Avg. CPC</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="report-body">
+
+    <!-- GOOGLE ADS -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon ads">&#9670;</div>
+        <div>
+          <div class="section-title">Google Ads Performance</div>
+          <div class="section-subtitle">Campaign breakdown — all networks</div>
+        </div>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-label">Total spend</div><div class="stat-value">$775.22</div><div class="stat-change down">&#9660; −$109.51 vs Mar</div></div>
+        <div class="stat-card"><div class="stat-label">Total clicks</div><div class="stat-value">1,201</div><div class="stat-change up">&#9650; +169 vs Mar</div></div>
+        <div class="stat-card"><div class="stat-label">Avg. CPC</div><div class="stat-value">$0.65</div><div class="stat-change up">&#9660; −$0.21 vs Mar</div></div>
+        <div class="stat-card"><div class="stat-label">Impressions</div><div class="stat-value">18,332</div><div class="stat-change down">&#9660; −41,053 vs Mar</div></div>
+      </div>
+
+      <div class="card"><div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>Campaign</th><th>Impr.</th><th>Clicks</th><th>Cost</th><th>CPC</th><th>CTR</th>
+          </tr></thead>
+          <tbody>
+            <tr class="highlight"><td>Search — Brand</td><td>889</td><td>194</td><td>$199.72</td><td>$1.03</td><td>21.82%</td></tr>
+            <tr class="highlight"><td>Search — Floor Plans</td><td>2,838</td><td>207</td><td>$198.37</td><td>$0.96</td><td>7.29%</td></tr>
+            <tr><td>Search — Location Based</td><td>2,832</td><td>176</td><td>$176.20</td><td>$1.00</td><td>6.21%</td></tr>
+            <tr class="highlight"><td>Performance Max</td><td>10,674</td><td>610</td><td>$198.29</td><td>$0.33</td><td>5.71%</td></tr>
+            <tr><td>Display — Retargeting</td><td>1,099</td><td>14</td><td>$2.64</td><td>$0.19</td><td>1.27%</td></tr>
+            <tr class="total-row"><td>Account Total</td><td>18,332</td><td>1,201</td><td>$775.22</td><td>$0.65</td><td>6.55%</td></tr>
+          </tbody>
+        </table>
+      </div></div>
+
+      <div style="margin-top: 24px;">
+        <div style="font-size: 13px; font-weight: 600; margin-bottom: 14px;">Clicks by campaign type</div>
+        <div class="net-bar-row">
+          <div class="net-bar-label">Perf. Max</div>
+          <div class="net-bar-track"><div class="net-bar-fill" style="width:100%;background:linear-gradient(90deg,#6ea86e,#5a8f5a);">610 clicks</div></div>
+          <div class="net-bar-stat">$0.33 CPC</div>
+        </div>
+        <div class="net-bar-row">
+          <div class="net-bar-label">Search (all)</div>
+          <div class="net-bar-track"><div class="net-bar-fill" style="width:95%;background:linear-gradient(90deg,#6a5acd,#5548a0);">577 clicks</div></div>
+          <div class="net-bar-stat">$1.00 CPC</div>
+        </div>
+        <div class="net-bar-row">
+          <div class="net-bar-label">Display Retarget.</div>
+          <div class="net-bar-track"><div class="net-bar-fill" style="width:15%;background:linear-gradient(90deg,#b0d5b0,#6ea86e);">14 clicks</div></div>
+          <div class="net-bar-stat">$0.19 CPC</div>
+        </div>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-title">&#9733; Key takeaways</div>
+        <p><strong>April delivered a strong, efficient month for Camino al Norte</strong> — clicks grew +169 to 1,201 while CPC dropped from $0.86 to $0.65, a 24% efficiency improvement. <strong>Performance Max remains the volume leader</strong> with 610 clicks at an exceptional $0.33 CPC, driving 51% of all account clicks. <strong>Search — Brand continues to show exceptional engagement with a 21.82% CTR</strong>, and <strong>Search — Floor Plans held strong at 7.29% CTR</strong> with the highest click volume of the Search campaigns (207 clicks). Display Retargeting is working efficiently at $0.19 CPC to reinforce brand presence. We're continuing to optimize Location Based landing pages and exploring expanded Performance Max budget given its consistent efficiency.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SEO -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon seo">&#9650;</div>
+        <div>
+          <div class="section-title">SEO Performance</div>
+          <div class="section-subtitle">Domain authority &amp; backlink health — April 2026</div>
+        </div>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-label">Domain Rating</div><div class="stat-value">2.2</div><div class="stat-change neutral">&#9644; holding</div></div>
+        <div class="stat-card"><div class="stat-label">Total backlinks</div><div class="stat-value">270</div></div>
+        <div class="stat-card"><div class="stat-label">Referring domains</div><div class="stat-value">57</div></div>
+        <div class="stat-card"><div class="stat-label">Keywords in Top 3</div><div class="stat-value">16</div><div class="stat-change up">&#9650; +12 vs prior</div></div>
+      </div>
+
+      <div class="card"><div class="table-wrap">
+        <table>
+          <thead><tr><th>SEO metric</th><th>Apr 2026</th><th>Prior</th></tr></thead>
+          <tbody>
+            <tr><td>Ahrefs Domain Rating</td><td>2.2</td><td>2</td></tr>
+            <tr><td>URL Rating</td><td>4.9</td><td>4.9</td></tr>
+            <tr><td>Total Backlinks</td><td>270</td><td>433</td></tr>
+            <tr><td>Total Referring Domains</td><td>57</td><td>47</td></tr>
+            <tr><td>Dofollow Backlinks</td><td>220</td><td>390</td></tr>
+            <tr><td>Dofollow Referring Domains</td><td>25</td><td>24</td></tr>
+            <tr><td>Keywords in Top 3</td><td>16</td><td>4</td></tr>
+            <tr><td>Organic Sessions (GA4)</td><td>1,027</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div></div>
+
+      <div class="insight-box">
+        <div class="insight-title">&#9733; SEO momentum</div>
+        <p><strong>April was a breakthrough month for Camino al Norte's SEO</strong>. <strong>Keywords in Top 3 quadrupled from 4 to 16</strong> — a massive ranking depth expansion driven by multiple North Las Vegas apartment terms entering the top positions. <strong>Organic sessions reached 1,027</strong>, the strongest of any New Earth property this month. Referring domains grew to 57 (+10), and Dofollow Referring Domains inched up to 25. Total backlinks saw a natural cleanup (433 → 270) as lower-quality links dropped off — this is expected as the link profile matures, and the ranking gains confirm the remaining links are doing their job. With 1,027 sessions and 16 keywords in the top 3, Camino is establishing itself as a real organic competitor in the North Las Vegas market.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- KEYWORDS -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon kw">&#9679;</div>
+        <div>
+          <div class="section-title">Keyword Rankings</div>
+          <div class="section-subtitle">Position tracking — April 2026 snapshot</div>
+        </div>
+      </div>
+
+      <div style="font-size: 13px; font-weight: 600; margin-bottom: 10px;">Branded keywords</div>
+      <div class="card" style="margin-bottom: 20px;"><div class="table-wrap">
+        <table>
+          <thead><tr><th>Keyword</th><th>Volume</th><th>Apr 2026</th><th>Mar 2026</th></tr></thead>
+          <tbody>
+            <tr><td>camino al norte apartments</td><td>720</td><td class="rank-cell rank-1">1</td><td>1</td></tr>
+            <tr><td>camino al norte townhomes</td><td>110</td><td class="rank-cell rank-1">1</td><td>1</td></tr>
+            <tr><td>camino al norte</td><td>590</td><td class="rank-cell rank-1">1</td><td>1</td></tr>
+          </tbody>
+        </table>
+      </div></div>
+
+      <div style="font-size: 13px; font-weight: 600; margin-bottom: 10px;">Non-branded keywords</div>
+      <div class="card" style="margin-bottom: 20px;"><div class="table-wrap">
+        <table>
+          <thead><tr><th>Keyword</th><th>Volume</th><th>Apr 2026</th><th>Mar 2026</th></tr></thead>
+          <tbody>
+            <tr><td>apartments for rent in north las vegas nv</td><td>10</td><td class="rank-cell rank-top10">4</td><td>4</td></tr>
+            <tr><td>apartments for rent in north las vegas</td><td>10</td><td class="rank-cell rank-top10">7</td><td>7</td></tr>
+            <tr><td>north las vegas nv apartments for rent</td><td>10</td><td class="rank-cell rank-top10">7</td><td>12</td></tr>
+            <tr><td>apartments north las vegas</td><td>170</td><td class="rank-cell rank-top10">9</td><td>7</td></tr>
+            <tr><td>north las vegas apartments</td><td>170</td><td class="rank-cell rank-top10">9</td><td>8</td></tr>
+            <tr><td>apartments in north las vegas</td><td>170</td><td class="rank-cell rank-top10">9</td><td>7</td></tr>
+            <tr><td>apartments in north las vegas nv</td><td>10</td><td class="rank-cell rank-top10">9</td><td>7</td></tr>
+            <tr><td>new apartments north las vegas</td><td>50</td><td class="rank-cell rank-top20">16</td><td>—</td></tr>
+            <tr><td>new apartments in north las vegas</td><td>20</td><td class="rank-cell rank-top20">17</td><td>—</td></tr>
+            <tr><td>northwest las vegas apartments</td><td>320</td><td class="rank-cell rank-top20">19</td><td>18</td></tr>
+          </tbody>
+        </table>
+      </div></div>
+
+      <div style="font-size: 13px; font-weight: 600; margin-bottom: 10px;">High-opportunity unranked keywords</div>
+      <div class="card"><div class="table-wrap">
+        <table>
+          <thead><tr><th>Keyword</th><th>Volume</th><th>Apr 2026</th></tr></thead>
+          <tbody>
+            <tr><td>apartments las vegas</td><td>40,500</td><td class="rank-cell rank-unranked">100+</td></tr>
+            <tr><td>apartments for rent las vegas</td><td>1,900</td><td class="rank-cell rank-unranked">100+</td></tr>
+            <tr><td>townhomes for rent las vegas</td><td>410</td><td class="rank-cell rank-unranked">100+</td></tr>
+            <tr><td>apartments for rent in las vegas</td><td>330</td><td class="rank-cell rank-unranked">100+</td></tr>
+            <tr><td>cheap apartments in north las vegas</td><td>320</td><td class="rank-cell rank-unranked">100+</td></tr>
+            <tr><td>studio apartments north las vegas</td><td>260</td><td class="rank-cell rank-unranked">100+</td></tr>
+            <tr><td>luxury apartments north las vegas</td><td>210</td><td class="rank-cell rank-unranked">100+</td></tr>
+            <tr><td>senior apartments north las vegas</td><td>210</td><td class="rank-cell rank-unranked">100+</td></tr>
+            <tr><td>low income apartments north las vegas</td><td>210</td><td class="rank-cell rank-unranked">100+</td></tr>
+            <tr><td>1 bedroom apartments north las vegas</td><td>210</td><td class="rank-cell rank-unranked">100+</td></tr>
+            <tr><td>2 bedroom apartments north las vegas</td><td>170</td><td class="rank-cell rank-unranked">100+</td></tr>
+            <tr><td>luxury apartments in north las vegas</td><td>170</td><td class="rank-cell rank-unranked">100+</td></tr>
+            <tr><td>3 bedroom apartments north las vegas</td><td>140</td><td class="rank-cell rank-unranked">100+</td></tr>
+          </tbody>
+        </table>
+      </div></div>
+
+      <div class="highlight-grid">
+        <div class="highlight-card" style="background:rgba(110,168,110,0.08);border:1px solid rgba(110,168,110,0.2);">
+          <div class="hl-label" style="color:var(--brand-accent);">Branded keywords</div>
+          <div class="hl-value" style="color:var(--brand-accent);">#1</div>
+          <div class="hl-sub">all 3 brand terms holding</div>
+        </div>
+        <div class="highlight-card" style="background:var(--green-bg);border:1px solid rgba(42,157,110,0.2);">
+          <div class="hl-label" style="color:var(--green);">Top 10 keywords</div>
+          <div class="hl-value" style="color:var(--green);">7</div>
+          <div class="hl-sub">North Las Vegas apartment terms</div>
+        </div>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-title">&#9733; Keyword insights</div>
+        <p><strong>All 3 brand keywords are holding at #1</strong> — "camino al norte apartments" (720 vol), "camino al norte townhomes" (110 vol), and "camino al norte" (590 vol). On the non-branded side, Camino now holds <strong>7 keywords in the top 10</strong> for North Las Vegas apartment searches, including core terms like "apartments north las vegas," "apartments in north las vegas," and "north las vegas apartments" (all at #9). "New apartments" variations broke into the top 20 this month (positions 16 and 17). The high-opportunity unranked keywords — especially "townhomes for rent las vegas" (410 vol) and the volume-heavy "apartments las vegas" (40,500 vol) — represent the next frontier as domain authority continues to grow.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- GEOFENCING -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon geo">&#9678;</div>
+        <div>
+          <div class="section-title">Geofencing Performance</div>
+          <div class="section-subtitle">Competitor &amp; local targeting, ad creative breakdown</div>
+        </div>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-label">Total impressions</div><div class="stat-value">28,854</div></div>
+        <div class="stat-card"><div class="stat-label">Total clicks</div><div class="stat-value">35</div></div>
+        <div class="stat-card"><div class="stat-label">Avg. CTR</div><div class="stat-value">0.12%</div></div>
+        <div class="stat-card"><div class="stat-label">Locations targeted</div><div class="stat-value">12</div></div>
+      </div>
+
+      <div style="font-size: 13px; font-weight: 600; margin-bottom: 10px;">Targeted locations</div>
+      <div class="card" style="margin-bottom: 20px;"><div class="table-wrap">
+        <table>
+          <thead><tr><th>Location</th><th>Address</th><th>ZIP</th><th>Impr.</th><th>CTR</th><th>Clicks</th></tr></thead>
+          <tbody>
+            <tr class="highlight"><td>Albertsons</td><td>3010 W Ann Rd</td><td>89031</td><td>6,530</td><td>0.15%</td><td>10</td></tr>
+            <tr class="highlight"><td>Sandstone Ridge Park</td><td>1661 West Hammer Ln</td><td>89031</td><td>5,119</td><td>0.16%</td><td>8</td></tr>
+            <tr><td>Planet Fitness</td><td>1324 W Craig Rd Unit 2</td><td>89032</td><td>4,002</td><td>0.05%</td><td>2</td></tr>
+            <tr><td>Smith's</td><td>5564 Camino Al Norte</td><td>89031</td><td>2,763</td><td>0.07%</td><td>2</td></tr>
+            <tr><td>Sedona at Lone Mountain</td><td>770 W Lon Mountain Rd</td><td>89031</td><td>2,241</td><td>0.09%</td><td>2</td></tr>
+            <tr><td>Walmart</td><td>1807 W Craig Rd</td><td>89032</td><td>1,750</td><td>0.06%</td><td>1</td></tr>
+            <tr><td>EoS Fitness</td><td>4520 N Scott Robinson Blvd</td><td>89031</td><td>1,616</td><td>0.06%</td><td>1</td></tr>
+            <tr><td>Los Cabos Villas</td><td>4429 N Lawrence St</td><td>89081</td><td>1,474</td><td>0.14%</td><td>2</td></tr>
+            <tr><td>The Solena Apartments</td><td>4249 N Commerce St</td><td>89032</td><td>1,444</td><td>0.14%</td><td>2</td></tr>
+            <tr><td>Parq at Camino</td><td>4555 Camino Al Norte</td><td>89031</td><td>1,132</td><td>0.09%</td><td>1</td></tr>
+            <tr class="highlight"><td>Buzz's Marine &amp; Outdoor</td><td>North Las Vegas</td><td>89031</td><td>723</td><td>0.28%</td><td>2</td></tr>
+            <tr class="highlight"><td>Natural Grocers</td><td>6305 Simmons St</td><td>89031</td><td>260</td><td>0.77%</td><td>2</td></tr>
+          </tbody>
+        </table>
+      </div></div>
+
+      <div style="font-size: 13px; font-weight: 600; margin-bottom: 10px;">Ad creative performance</div>
+      <div class="card"><div class="table-wrap">
+        <table>
+          <thead><tr><th>Creative</th><th>Size</th><th>Impr.</th><th>Clicks</th><th>CTR</th></tr></thead>
+          <tbody>
+            <tr><td>2.png</td><td>300×50</td><td>5,528</td><td>5</td><td>0.09%</td></tr>
+            <tr><td>1.png</td><td>300×50</td><td>5,390</td><td>5</td><td>0.09%</td></tr>
+            <tr class="highlight"><td>3_300x50</td><td>300×50</td><td>2,650</td><td>5</td><td>0.19%</td></tr>
+            <tr><td>1_300x50</td><td>300×50</td><td>2,617</td><td>1</td><td>0.04%</td></tr>
+            <tr><td>2_300x50</td><td>300×50</td><td>2,516</td><td>2</td><td>0.08%</td></tr>
+            <tr><td>2_300x250</td><td>300×250</td><td>2,265</td><td>3</td><td>0.13%</td></tr>
+            <tr><td>1_300x250</td><td>300×250</td><td>2,245</td><td>3</td><td>0.13%</td></tr>
+            <tr class="highlight"><td>3_300x250</td><td>300×250</td><td>1,907</td><td>4</td><td>0.21%</td></tr>
+            <tr><td>3_728x90</td><td>728×90</td><td>1,007</td><td>0</td><td>0.00%</td></tr>
+            <tr class="highlight"><td>2_728x90</td><td>728×90</td><td>933</td><td>2</td><td>0.21%</td></tr>
+            <tr class="highlight"><td>1_728x90</td><td>728×90</td><td>700</td><td>3</td><td>0.43%</td></tr>
+            <tr class="total-row"><td>Total</td><td></td><td>28,854</td><td>35</td><td>0.12%</td></tr>
+          </tbody>
+        </table>
+      </div></div>
+
+      <div class="insight-box">
+        <div class="insight-title">&#9733; Geofencing insights</div>
+        <p><strong>Albertsons and Sandstone Ridge Park are the volume leaders</strong> — together driving 18 of 35 total clicks (51%) at CTRs above the 0.12% program average. But the efficiency winners are smaller: <strong>Natural Grocers led all locations with a 0.77% CTR</strong> (2 clicks from 260 impressions), and <strong>Buzz's Marine &amp; Outdoor followed at 0.28%</strong> — both showing that niche, community-oriented locations punch above their weight. On creative, <strong>the 1_728x90 leaderboard leads CTR at 0.43%</strong>, with 3_300x50 (0.19%) and 3_300x250 (0.21%) also outperforming. We're shifting impression weight toward the high-CTR locations and creatives going forward.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- REPUTATION -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon rep">&#9733;</div>
+        <div>
+          <div class="section-title">Reputation Management</div>
+          <div class="section-subtitle">Google Reviews — current snapshot</div>
+        </div>
+      </div>
+
+      <div class="rep-grid">
+        <div class="rep-card">
+          <div class="rep-label">Google Rating</div>
+          <div class="rep-value">4.6</div>
+          <div class="rep-stars">&#9733; &#9733; &#9733; &#9733; &#9734;</div>
+          <div class="rep-sub">out of 5 stars</div>
+        </div>
+        <div class="rep-card">
+          <div class="rep-label">Total Reviews</div>
+          <div class="rep-value">139</div>
+          <div class="rep-sub" style="margin-top:12px;">verified Google reviews</div>
+        </div>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-title">&#9733; Why reputation matters</div>
+        <p><strong>Camino al Norte leads the New Earth portfolio on both rating and review volume</strong> — 4.6 stars backed by 139 Google reviews, the strongest reputation foundation of any of the three properties (Onyx: 4.5/105, Elysian: 4.3/128). Strong review sentiment is a major signal for local SEO authority and AI Search recommendations, and this reputation strength is likely a meaningful contributor to Camino's rapid ranking gains. We're continuing resident communication and post-tour review requests to grow the review base further and maintain the 4.6+ rating as the community expands.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- NEXT STEPS -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon ads" style="background:rgba(26,46,26,0.08);color:#1a2e1a;">&#10148;</div>
+        <div>
+          <div class="section-title">What We're Working On</div>
+          <div class="section-subtitle">Focus areas for May 2026</div>
+        </div>
+      </div>
+      <div class="next-grid">
+        <div class="next-card" style="border-left:3px solid var(--brand-accent);">
+          <div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--brand-accent);margin-bottom:8px;">Google Ads</div>
+          <p>Performance Max drove 51% of April clicks at $0.33 CPC — we're scaling its budget further. Search — Brand's 21.82% CTR confirms strong prospect intent, and Search — Floor Plans will get expanded targeting based on its 207-click volume. We're refining Location Based landing pages to match the engagement we're seeing on Brand and Floor Plans.</p>
+        </div>
+        <div class="next-card" style="border-left:3px solid var(--green);">
+          <div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--green);margin-bottom:8px;">SEO</div>
+          <p>Keywords in Top 3 quadrupled (4 → 16) and organic sessions hit 1,027 — we're turning this depth into volume growth. Priority targets: "townhomes for rent las vegas" (410 vol) and the high-volume generic terms. We're continuing high-quality backlink building to push the 7 keywords currently at #9 into the top 5.</p>
+        </div>
+        <div class="next-card" style="border-left:3px solid var(--amber);">
+          <div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--amber);margin-bottom:8px;">Geofencing</div>
+          <p>We're shifting weight to Albertsons, Sandstone Ridge Park, Natural Grocers, and Buzz's Marine &amp; Outdoor based on their strong CTRs. Creative 1_728x90 (0.43% CTR) gets expanded rotation, and we're evaluating underperforming locations (Planet Fitness, Walmart, EoS Fitness) for replacement with higher-engagement targets.</p>
+        </div>
+        <div class="next-card" style="border-left:3px solid var(--green);">
+          <div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--green);margin-bottom:8px;">Reputation</div>
+          <p>The 4.6-star / 139-review base is the portfolio's strongest and it's feeding both SEO authority and ad trust signals. We're continuing post-tour and post-move-in review requests to keep building the gap — every 10-review milestone compounds the local authority advantage.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="report-footer">
+    <div class="brand">Camino al Norte</div>
+    Report generated April 2026 &nbsp;·&nbsp; Data sources: Google Ads, Ahrefs, Google Analytics 4, Geofencing platform, Google Business Profile
+  </div>
+
+</div>
+</div>
+<!-- ===== END CAMINO ===== -->
+
+<script>
+  function switchTab(property) {
+    document.querySelectorAll('.property-report').forEach(r => r.classList.remove('active'));
+    document.getElementById('report-' + property).classList.add('active');
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector('.tab-btn.for-' + property).classList.add('active');
+    document.body.className = 'on-' + property;
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+</script>
+
+</body>
+</html>
